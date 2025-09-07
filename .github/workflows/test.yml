@@ -1,0 +1,17 @@
+name: Test LLM Response Timer
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Run LLM Response Timer Action
+        uses: ./github/workflows/llm-response-timer
+        

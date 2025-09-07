@@ -1,0 +1,22 @@
+name: "LLM Response Timer Action"
+description: "Measure response time of local LLMs via LM Studio using Python"
+author: "Margarethe-Techstarter"
+
+inputs:
+  api_url:
+    description: "URL of the local LLM API (e.g. http://localhost:1234)"
+    required: true
+  prompt_file:
+    description: "Path to the system prompt file"
+    required: true
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.api_url }}
+    - ${{ inputs.prompt_file }}
+
+branding:
+  icon: "clock"
+  color: "purple"
