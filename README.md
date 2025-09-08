@@ -3,6 +3,11 @@
 
 This GitHub Action tests a locally running Language Model via LM Studio by sending a prompt-based request, measuring the response time, and playing acoustic feedback upon completion.
 
+## 🔗 Used in: Dr. Nature
+
+This GitHub Action was originally developed as part of the [Dr. Nature](https://github.com/Margarethe-Techstarter/dr-nature) project – a local AI assistant for natural health questions.
+
+➡️ View the main project: **[Dr. Nature – A holistic AI-powered health assistant](https://github.com/Margarethe-Techstarter/dr-nature)**
 
 ## ✅ Features
 

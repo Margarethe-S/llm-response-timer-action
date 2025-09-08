@@ -1,17 +1,18 @@
-name: Test LLM Response Timer
+name: 🧪 Test LLM Response Timer Action
 
 on:
-  push:
-    branches: [ main ]
+  workflow_dispatch:  # Manuelles Starten im GitHub-UI
 
 jobs:
-  test-action:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: 📥 Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Run LLM Response Timer Action
-        uses: ./github/workflows/llm-response-timer
-        
+      - name: 🚀 Run LLM Response Timer Action
+        uses: ./
+        with:
+          api_url: "http://localhost:1234/v1/chat/completions"
+          prompt_file: "./prompts/action_prompt1.0.txt"
