@@ -10,6 +10,9 @@ from logger import save_log
 api_url = sys.argv[1] 
 
 prompt_path = sys.argv[2]
+
+user_input = sys.argv[3]
+
 with open(prompt_path, "r") as f:
     prompt = f.read()
 
@@ -67,8 +70,7 @@ def live_stopwatch(start_time):
 t = threading.Thread(target=live_stopwatch, args=(start_time,))
 t.start()
 
-# Example user input
-user_input = "Was kann ich gegen Kopfschmerzen auf natürliche Weise tun?"
+
 
 try:
     # Send request to LM Studio

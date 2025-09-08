@@ -11,8 +11,6 @@ LABEL version="1.0"
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy all local files to the container
-COPY ../../prompts/action_prompt1.0.txt ./action_prompt1.0.txt
 
 # Install Python dependencies from requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt

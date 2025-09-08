@@ -6,9 +6,11 @@ inputs:
   api_url:
     description: "URL of the local LLM API (e.g. http://localhost:1234/v1/chat/completions)"
     required: true
-
   prompt_file:
     description: "Path to the system prompt text file"
+    required: true
+  user_input:
+    description: "User question for the LLM"
     required: true
 
 runs:
@@ -17,6 +19,7 @@ runs:
   args:
     - ${{ inputs.api_url }}
     - ${{ inputs.prompt_file }}
+    - ${{ inputs.user_input }}
 
 branding:
   icon: "clock"
