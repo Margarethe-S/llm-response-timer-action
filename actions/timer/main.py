@@ -5,22 +5,79 @@ import time
 import threading
 import sys
 from logger import save_log
+import platform
+from playsound import playsound
 
+def beep_success():
+    system_type = platform.system()
+    try:
+        if system_type == "Windows":
+            import winsound
+            winsound.Beep(1000, 200)
+        elif system_type == "Darwin":  # macOS
+            os.system('say "done"')
+        elif system_type == "Linux":
+            os.system('paplay /usr/share/sounds/freedesktop/stereo/complete.oga')
+        else:
+            docker_beep()
+    except Exception as e:
+        docker_beep(error=True, error_msg=e)
 
-api_url = sys.argv[1] 
+def beep_failure(error=None):
+    system_type = platform.system()
+    try:
+        if system_type == "Windows":
+            import winsound
+            winsound.Beep(500, 200)
+            time.sleep(0.1)
+            winsound.Beep(500, 200)
+        elif system_type == "Darwin":
+            os.system('say "error"')
+        elif system_type == "Linux":
+            os.system('paplay /usr/share/sounds/freedesktop/stereo/dialog-warning.oga && paplay /usr/share/sounds/freedesktop/stereo/dialog-warning.oga')
+        else:
+            docker_beep(error=True, error_msg=error)
+    except Exception as e:
+        docker_beep(error=True, error_msg=e)
 
+def docker_beep(success=True, error_msg=None):
+    if success:
+        print("✅ SUCCESS (Docker Fallback)")
+        try:
+            playsound("sounds/success.mp3")
+        except Exception as e:
+            print(f"⚠️ Audio-Fallback failed: {e}")
+            print("\a")  # Notfallbeep als Zeichen
+    else:
+        print("❌ ERROR (Docker Fallback)")
+        if error_msg:
+            print(f"Details: {str(error_msg)}")
+        try:
+            playsound("sounds/error.mp3")
+        except Exception as e:
+            print(f"⚠️ Audio-Fallback failed: {e}")
+            print("\a\a")
+
+# Check arguments
+if len(sys.argv) < 4:
+    print("❌ Usage: python main.py <API-URL> <PROMPT-PATH> <QUESTION>")
+    sys.exit(1)
+
+api_url = sys.argv[1]
 prompt_path = sys.argv[2]
-
 user_input = sys.argv[3]
 
-with open(prompt_path, "r") as f:
+# Print the inputs (for transparency/logging)
+print(f"📡 API-URL: {api_url}")
+print(f"📄 Prompt file: {prompt_path}")
+print(f"💬 Question: {user_input}")
+
+with open(prompt_path, "r", encoding="utf-8") as f:
     prompt = f.read()
+print("Loading system prompt:", prompt[:300], "...")
 
 # Ensure the logs folder exists
 os.makedirs("logs", exist_ok=True)
-
-# Path to the system prompt file
-
 
 # Event to stop the stopwatch thread
 stop_event = threading.Event()
@@ -28,28 +85,6 @@ stop_event = threading.Event()
 # Initialize elapsed time and status message
 elapsed_time = 0
 status_msg = "✅ Successful!"
-
-# Load environment variables from .env file
-def load_env(filepath=".env"):
-    if not os.path.exists(filepath):
-        print(f"⚠️  .env file not found at: {filepath}")
-        return
-    with open(filepath, "r") as f:
-        for line in f:
-            if line.strip() and not line.startswith("#"):
-                key, value = line.strip().split("=", 1)
-                os.environ[key] = value
-
-load_env()
-
-# Get API URL from environment variable
-api_url = os.getenv("LMSTUDIO_API_URL")
-
-# Load the system prompt
-with open("prompts/action_prompt1.0.txt", "r", encoding="utf-8") as f:
-    prompt = f.read()
-
-print("Loading system prompt:", prompt[:300], "...")
 
 # 🕒 Shared start time
 start_time = time.time()
@@ -69,8 +104,6 @@ def live_stopwatch(start_time):
 # 🟢 Start the stopwatch
 t = threading.Thread(target=live_stopwatch, args=(start_time,))
 t.start()
-
-
 
 try:
     # Send request to LM Studio
@@ -135,14 +168,18 @@ except KeyError as e:
 finally:
     try:
         save_log(prompt_path, user_input, str(response), elapsed_time, status_msg)
+        
+        if success:
+            beep_success()
+        else:
+            beep_failure(error=response)
+
     except Exception as e:
         print(f"⚠️ Error while saving log file: {e}")
+        beep_failure(error=e)
 
     stop_event.set()
     t.join()
+    print(status_msg)
 
-    if success:
-        os.system('powershell -c "[console]::beep(1000, 500)"')
-        print(status_msg)
-    else:
-        os.system('powershell -c "[console]::beep(1000, 500); Start-Sleep -Milliseconds 200; [console]::beep(600, 500)"')
+

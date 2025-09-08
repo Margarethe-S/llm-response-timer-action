@@ -11,14 +11,15 @@ LABEL version="1.0"
 # Set the working directory inside the container
 WORKDIR /app
 
-COPY main.py /app/main.py
-COPY logger.py /app/logger.py
-COPY prompts/action_prompt1.0.txt /app/prompts/action_prompt1.0.txt
-COPY requirements.txt /app/requirements.txt
+COPY actions/timer/main.py /app/main.py
+COPY actions/timer/logger.py /app/logger.py
+COPY actions/timer/requirements.txt /app/requirements.txt
+COPY actions/timer/prompts /app/prompts
 
 
 # Install Python dependencies from requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
+RUN apt-get update && apt-get install -y mpg123 && apt-get clean
 
 # Define the entry point for the Action
 ENTRYPOINT ["python3", "/app/main.py"]

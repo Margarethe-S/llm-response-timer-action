@@ -60,15 +60,6 @@ Store your prompt in:
 
 You can replace the path in `main.py` by editing the `prompt_path` variable.
 
-
-## ⚙️ Requirements
-
-Create a `.env` file in your root directory with the following content:
-
-```env
-LMSTUDIO_API_URL=http://localhost:1234/v1/chat/completions
-```
-
 ## 🛠️ Installation
 
 ```bash

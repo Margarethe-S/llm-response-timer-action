@@ -64,15 +64,6 @@ Speichere deinen Prompt zum Beispiel in:
 
 Du kannst den Pfad in der `main.py` anpassen – direkt über die Variable `prompt_path`.
 
-
-## ⚙️ Voraussetzungen
-
-Erstelle eine `.env`-Datei im Hauptverzeichnis deines Projekts mit folgendem Inhalt:
-
-```env
-LMSTUDIO_API_URL=http://localhost:1234/v1/chat/completions
-```
-
 ## 🛠️ Installation
 
 ```bash
