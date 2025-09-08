@@ -15,4 +15,4 @@ jobs:
         uses: ./.github/actions/timer
         with:
           api_url: 'http://localhost:1234/v1/chat/completions'
-          prompt_path: './prompts/action_prompt1.0.txt'
+          prompt_file: './prompts/action_prompt1.0.txt'

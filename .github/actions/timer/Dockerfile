@@ -9,7 +9,7 @@ LABEL maintainer="Margarethe-Techstarter"
 LABEL description="GitHub Action to test local LLMs via LM Studio and measure response time"
 LABEL version="1.0"
 # Set the working directory inside the container
-WORKDIR /app
+WORKDIR /app/.github/actions/timer
 
 # Copy all local files to the container
 COPY . /app
