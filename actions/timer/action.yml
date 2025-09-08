@@ -6,6 +6,7 @@ inputs:
   api_url:
     description: "URL of the local LLM API (e.g. http://localhost:1234/v1/chat/completions)"
     required: true
+
   prompt_file:
     description: "Path to the system prompt text file"
     required: true
