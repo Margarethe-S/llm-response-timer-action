@@ -12,7 +12,7 @@ LABEL version="1.0"
 WORKDIR /app/.github/actions/timer
 
 # Copy all local files to the container
-COPY ../requirements.txt ./
+COPY . ./
 
 # Install Python dependencies from requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
