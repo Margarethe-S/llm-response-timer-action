@@ -109,6 +109,10 @@ This repository is shared in the spirit of learning and development.
 Feel free to fork or adapt it if it’s useful for your own projects.
 
 Good luck with your builds!
+
+📝 License: This project is licensed under the MIT License.  
+See the [LICENSE](./LICENSE) file for details.
+
 ---
 
 > ⚠️ **Note**  

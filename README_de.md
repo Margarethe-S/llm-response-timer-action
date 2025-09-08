@@ -114,6 +114,9 @@ Gerne darfst du es forken oder anpassen, wenn es dir bei eigenen Projekten hilft
 
 Viel Erfolg bei deinen Entwicklungen!
 
+📝 Lizenz: Dieses Projekt steht unter der MIT-Lizenz.  
+Details findest du in der Datei [LICENSE](./LICENSE).
+
 ---
  
 > ⚠️ **Hinweis**  
