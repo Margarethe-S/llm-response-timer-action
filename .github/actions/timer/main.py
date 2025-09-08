@@ -6,14 +6,16 @@ import threading
 import sys
 from logger import save_log
 
+
 api_url = sys.argv[1] 
 prompt_file = sys.argv[2]
+prompt_path = prompt_file  # For logging purposes
 
 # Ensure the logs folder exists
 os.makedirs("logs", exist_ok=True)
 
 # Path to the system prompt file
-prompt_path = "prompts/action_prompt1.0.txt"
+
 
 # Event to stop the stopwatch thread
 stop_event = threading.Event()
