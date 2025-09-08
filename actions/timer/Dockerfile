@@ -13,6 +13,7 @@ WORKDIR /app
 
 COPY main.py /app/main.py
 COPY logger.py /app/logger.py
+COPY prompts/action_prompt1.0.txt /app/prompts/action_prompt1.0.txt
 COPY requirements.txt /app/requirements.txt
 
 
