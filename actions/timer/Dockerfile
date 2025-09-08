@@ -11,6 +11,7 @@ LABEL version="1.0"
 # Set the working directory inside the container
 WORKDIR /app
 
+COPY requirements.txt .
 
 # Install Python dependencies from requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
