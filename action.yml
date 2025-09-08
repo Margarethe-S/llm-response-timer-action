@@ -1,13 +1,13 @@
 name: "LLM Response Timer Action"
-description: "Measure response time of local LLMs via LM Studio using Python"
+description: "Measure response time of local LLM via LM Studio"
 author: "Margarethe-Techstarter"
 
 inputs:
   api_url:
-    description: "URL of the local LLM API (e.g. http://localhost:1234)"
+    description: "URL of the local LLM API (e.g. http://localhost:1234/v1/chat/completions)"
     required: true
   prompt_file:
-    description: "Path to the system prompt file"
+    description: "Path to the system prompt text file"
     required: true
 
 runs:
