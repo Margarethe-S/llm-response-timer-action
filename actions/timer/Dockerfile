@@ -14,7 +14,7 @@ WORKDIR /app
 # Copy all local files to the container
 COPY actions/timer/ .
 
-COPY ../../prompts/ ./prompts
+COPY prompts/ ./prompts
 
 # Install Python dependencies from requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
