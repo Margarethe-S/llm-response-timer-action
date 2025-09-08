@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Run LLM Response Timer Action
-        uses: ./.github/actions/llm-timer
+        uses: ./github/actions/llm-timer
         with:
           api_url: 'http://localhost:1234/v1/chat/completions'
           prompt_file: './prompts/action_prompt1.0.txt'
