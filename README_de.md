@@ -9,6 +9,16 @@ Diese GitHub Action wurde ursprünglich im Rahmen des Projekts [Dr. Nature](http
 
 ➡️ Zum Hauptprojekt: **[Dr. Nature – A holistic AI-powered health assistant](https://github.com/Margarethe-Techstarter/dr-nature)**
 
+## 📊 Dieses Projekt befindet sich aktuell in aktiver Entwicklung.
+
+Obwohl die Action noch nicht im GitHub Marketplace veröffentlicht wurde, wird sie bereits von Entwickler*innen getestet und weiterverfolgt.  
+Das zeigt: Die Idee trifft auf Interesse – und der Ansatz ist praxisrelevant.
+
+Die Entwicklung erfolgt bewusst offen, lernorientiert und dokumentiert – inklusive aller Tests, Fehlerphasen und Verbesserungen.  
+Der Fokus liegt auf Stabilität, Klarheit und echter Weiterentwicklung, nicht auf Perfektion.
+
+🛠️ Eine Veröffentlichung im Marketplace ist geplant, sobald die Funktionalität verlässlich sichergestellt ist.
+
 
 ## ✅ Funktionen
 

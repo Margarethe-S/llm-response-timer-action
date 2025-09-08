@@ -9,6 +9,17 @@ This GitHub Action was originally developed as part of the [Dr. Nature](https://
 
 ➡️ View the main project: **[Dr. Nature – A holistic AI-powered health assistant](https://github.com/Margarethe-Techstarter/dr-nature)**
 
+## 📊 This project is currently in active development.
+
+Even though the Action is not yet published on the GitHub Marketplace, it is already being tested and explored by other developers.  
+This shows that the concept resonates and has practical relevance.
+
+The development is intentionally transparent and learning-focused – including all tests, errors, and improvements.  
+The goal is stability, clarity, and real progress – not perfection.
+
+🛠️ A Marketplace release is planned as soon as the core functionality is reliably established.
+
+
 ## ✅ Features
 
 - Loads `.env` file to retrieve the LM Studio API URL
