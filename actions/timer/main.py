@@ -8,8 +8,10 @@ from logger import save_log
 
 
 api_url = sys.argv[1] 
-prompt_file = sys.argv[2]
-prompt_path = prompt_file  # For logging purposes
+
+prompt_path = sys.argv[2]
+with open(prompt_path, "r") as f:
+    prompt = f.read()
 
 # Ensure the logs folder exists
 os.makedirs("logs", exist_ok=True)
@@ -41,7 +43,7 @@ load_env()
 api_url = os.getenv("LMSTUDIO_API_URL")
 
 # Load the system prompt
-with open(prompt_path, "r", encoding="utf-8") as f:
+with open("prompts/action_prompt1.0.txt", "r", encoding="utf-8") as f:
     prompt = f.read()
 
 print("Loading system prompt:", prompt[:300], "...")
