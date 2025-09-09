@@ -5,7 +5,7 @@
 ![Tested on LM Studio](https://img.shields.io/badge/tested-LM%20Studio-blue)
 
 
-A GitHub Action that tests locally running Language Models via LM Studio – by sending prompts, measuring response time, and playing acoustic feedback.
+This GitHub Action tests a locally running language model via LM Studio by sending a prompt-based request, measuring the response time, providing acoustic feedback upon completion, and saving the results in a log file.
 
 
 ## 🔗 Used in: Dr. Nature
@@ -14,24 +14,27 @@ This GitHub Action was originally developed as part of the [Dr. Nature](https://
 
 ➡️ View the main project: **[Dr. Nature – A holistic AI-powered health assistant](https://github.com/Margarethe-S/dr-nature)**
 
-## 📊 This project is currently in active development.
-
-Although the Action is not yet published on the GitHub Marketplace, it is already being tested and explored by other developers – a sign that the concept resonates and offers practical value.
-
-The development is intentionally transparent and learning-focused – including all tests, errors, and improvements.  
-The goal is stability, clarity, and real progress – not perfection.
-
-🛠️ A Marketplace release is planned as soon as the core functionality is reliably established.
+## ✅ This project has reached stable core functionality.
 
 
-## ✅ Features
+The Action has been tested successfully in various local and Docker-based setups. It is now ready for public use and will be continuously improved based on user feedback.
 
-- Loads `.env` file to retrieve the LM Studio API URL
-- Loads a system prompt from a local `.txt` file
-- Sends a prompt to a local LLM via HTTP POST (JSON)
+
+Development remains transparent and learning-focused – including all tests, logs, and refinements.
+
+
+✅ The GitHub Marketplace release is already live.
+
+
+## 🛠️ Features
+
+
+- Loads the system prompt from a `.txt` file ℹ️ The file path must be correct depending on your setup (local or Docker).
+- Sends a prompt-based request to a locally running LLM (e.g., LM Studio)
 - Measures exact response time in seconds and minutes
 - Plays a **success tone** when a response is received
 - Plays a **warning tone** when a timeout or any error occurs
+- Saves the response and timing in a log file
 - Differentiates between:
   - ⏰ Timeout (after 300 seconds)
   - ❌ Connection or request error
@@ -52,9 +55,12 @@ Each log entry includes:
 
 ## 🧪 Ideal for
 
-- Testing response time of local LLMs
-- Debugging system prompt behavior
-- Automating your AI development workflow
+- Testing the response time of locally running language models (e.g., LM Studio, o̲ll̲a̲m̲a̲)
+- Debugging and fine-tuning system prompts
+- Automating your local AI development workflow
+- Quick functionality checks after prompt changes
+- Error tracking with acoustic feedback and log files
+- Comparing response times across models or configurations
 
 ## 📂 Example Prompt File
 

@@ -4,7 +4,8 @@
 ![Tested on LM Studio](https://img.shields.io/badge/tested-LM%20Studio-blue)
 
 
-Diese GitHub Action testet ein lokal laufendes Sprachmodell über LM Studio, indem sie eine promptbasierte Anfrage sendet, die Antwortzeit misst und bei Abschluss ein akustisches Feedback ausgibt.
+Diese GitHub Action testet ein lokal laufendes Sprachmodell über LM Studio, indem sie eine promptbasierte Anfrage sendet, die Antwortzeit misst, bei Abschluss ein akustisches Feedback ausgibt und die Ergebnisse in einer Log-Datei speichert.
+
 
 ## 🔗 Einsatz in Dr. Nature
 
@@ -12,25 +13,25 @@ Diese GitHub Action wurde ursprünglich im Rahmen des Projekts [Dr. Nature](http
 
 ➡️ Zum Hauptprojekt: **[Dr. Nature – A holistic AI-powered health assistant](https://github.com/Margarethe-S/dr-nature)**
 
-## 📊 Dieses Projekt befindet sich aktuell in aktiver Entwicklung.
-
-Obwohl die Action noch nicht im GitHub Marketplace veröffentlicht wurde, wird sie bereits von Entwickler*innen getestet und weiterverfolgt.  
-Das zeigt: Die Idee trifft auf Interesse – und der Ansatz ist praxisrelevant.
-
-Die Entwicklung erfolgt bewusst offen, lernorientiert und dokumentiert – inklusive aller Tests, Fehlerphasen und Verbesserungen.  
-Der Fokus liegt auf Stabilität, Klarheit und echter Weiterentwicklung, nicht auf Perfektion.
-
-🛠️ Eine Veröffentlichung im Marketplace ist geplant, sobald die Funktionalität verlässlich sichergestellt ist.
+## ✅ Dieses Projekt hat einen stabilen Funktionsstand erreicht.
 
 
-## ✅ Funktionen
+Die Action wurde erfolgreich in lokalen und Docker-basierten Umgebungen getestet. Sie ist jetzt bereit zur öffentlichen Nutzung und wird auf Basis von Nutzerfeedback weiterentwickelt.
 
-- Lädt die `.env`-Datei, um die LM Studio API-URL zu erhalten
-- Lädt ein Systemprompt aus einer lokalen `.txt`-Datei
-- Sendet einen Prompt per HTTP POST (JSON) an ein lokal laufendes Sprachmodell
+
+Die Entwicklung bleibt offen, nachvollziehbar und lernorientiert – inklusive aller Tests, Logs und Optimierungen.
+
+✅ Die Grundfunktionalität wurde erfolgreich getestet. Eine Veröffentlichung im GitHub Marketplace ist erfolgt.
+
+
+## 🛠️ Funktionen
+
+- Lädt den System-Prompt aus einer `.txt`-Datei ℹ️ Der Pfad zur Datei muss je nach Setup (lokal vs. Docker) korrekt angegeben werden.
+- Sendet eine promptbasierte Anfrage an ein lokal laufendes Sprachmodell (z. B. LM Studio)
 - Misst die genaue Antwortzeit in Sekunden und Minuten
 - Spielt einen **Erfolgston**, wenn eine Antwort empfangen wurde
 - Spielt einen **Warnton**, wenn ein Timeout oder Fehler auftritt
+- Speichert die Antwort und Zeitmessung in einer Log-Datei
 - Unterscheidet zwischen:
   - ⏰ Zeitüberschreitung (nach 300 Sekunden)
   - ❌ Verbindungs- oder Anfragefehler
@@ -53,10 +54,12 @@ Jeder Eintrag enthält:
 
 ## 🧪 Ideal geeignet für
 
-- Testen der Antwortzeit lokal laufender Sprachmodelle
-- Debugging von Systemprompts
-- Automatisierung deines KI-Entwicklungs-Workflows
-
+- Testen der Antwortzeit lokal laufender Sprachmodelle (z. B. LM Studio)
+- Debugging und Feintuning von Systemprompts
+- Automatisierung deines lokalen KI-Entwicklungsworkflows
+- Schnelle Funktionstests bei Promptänderungen
+- Fehlersuche mit akustischem Feedback und Logdateien
+- Vergleich von Reaktionszeiten bei unterschiedlichen Modellen oder Konfigurationen
 
 ## 📂 Beispiel-Prompt-Datei
 
@@ -151,7 +154,7 @@ Screenshot: Log-Ordnerstrucktur
 
 Screenshot: Beispiel-Inhalt einer Log-Datei
 
-![alt text](images/image.png))
+![alt text](images/image.png)
 
 Screenshot: Terminalausgabe der Antwortzeit
 
