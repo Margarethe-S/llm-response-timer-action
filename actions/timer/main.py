@@ -1,64 +1,58 @@
 import os
+import sys
 import requests
 import json
 import time
 import threading
-import sys
-from logger import save_log
 import platform
-from playsound import playsound
+from datetime import datetime
+from logger import save_log
+from playsound import playsound  # Optional, falls du mp3s nutzen willst
 
+# 🎵 Sound- und Popup-Handling
 def beep_success():
-    system_type = platform.system()
     try:
-        if system_type == "Windows":
+        if platform.system() == "Windows":
             import winsound
             winsound.Beep(1000, 200)
-        elif system_type == "Darwin":  # macOS
+        elif platform.system() == "Darwin":
             os.system('say "done"')
-        elif system_type == "Linux":
+        elif platform.system() == "Linux":
             os.system('paplay /usr/share/sounds/freedesktop/stereo/complete.oga')
         else:
-            docker_beep()
+            docker_fallback(success=True)
     except Exception as e:
-        docker_beep(error=True, error_msg=e)
+        docker_fallback(success=True, error_msg=str(e))
 
-def beep_failure(error=None):
-    system_type = platform.system()
+
+def beep_failure(error_msg=None):
     try:
-        if system_type == "Windows":
+        if platform.system() == "Windows":
             import winsound
             winsound.Beep(500, 200)
             time.sleep(0.1)
             winsound.Beep(500, 200)
-        elif system_type == "Darwin":
+        elif platform.system() == "Darwin":
             os.system('say "error"')
-        elif system_type == "Linux":
-            os.system('paplay /usr/share/sounds/freedesktop/stereo/dialog-warning.oga && paplay /usr/share/sounds/freedesktop/stereo/dialog-warning.oga')
+        elif platform.system() == "Linux":
+            os.system('paplay /usr/share/sounds/freedesktop/stereo/dialog-warning.oga')
+            os.system('paplay /usr/share/sounds/freedesktop/stereo/dialog-warning.oga')
         else:
-            docker_beep(error=True, error_msg=error)
+            docker_fallback(success=False, error_msg=error_msg)
     except Exception as e:
-        docker_beep(error=True, error_msg=e)
+        docker_fallback(success=False, error_msg=str(e))
 
-def docker_beep(success=True, error_msg=None):
+
+def docker_fallback(success=True, error_msg=None):
+    print("\a" if success else "\a\a")
     if success:
-        print("✅ SUCCESS (Docker Fallback)")
-        try:
-            playsound("sounds/success.mp3")
-        except Exception as e:
-            print(f"⚠️ Audio-Fallback failed: {e}")
-            print("\a")  # Notfallbeep als Zeichen
+        print("✅ SUCCESS (Docker fallback)")
     else:
-        print("❌ ERROR (Docker Fallback)")
+        print("❌ ERROR (Docker fallback)")
         if error_msg:
-            print(f"Details: {str(error_msg)}")
-        try:
-            playsound("sounds/error.mp3")
-        except Exception as e:
-            print(f"⚠️ Audio-Fallback failed: {e}")
-            print("\a\a")
+            print(f"🔎 Details: {error_msg}")
 
-# Check arguments
+# ✅ CLI-Argumente prüfen
 if len(sys.argv) < 4:
     print("❌ Usage: python main.py <API-URL> <PROMPT-PATH> <QUESTION>")
     sys.exit(1)
@@ -67,46 +61,41 @@ api_url = sys.argv[1]
 prompt_path = sys.argv[2]
 user_input = sys.argv[3]
 
-# Print the inputs (for transparency/logging)
+# 📂 Logs-Verzeichnis sicherstellen
+os.makedirs("logs", exist_ok=True)
+
+# 📄 Prompt-Datei lesen
+with open(prompt_path, "r", encoding="utf-8") as f:
+    prompt = f.read()
+
 print(f"📡 API-URL: {api_url}")
 print(f"📄 Prompt file: {prompt_path}")
 print(f"💬 Question: {user_input}")
+print("📤 Sende Anfrage an LM Studio...")
 
-with open(prompt_path, "r", encoding="utf-8") as f:
-    prompt = f.read()
-print("Loading system prompt:", prompt[:300], "...")
-
-# Ensure the logs folder exists
-os.makedirs("logs", exist_ok=True)
-
-# Event to stop the stopwatch thread
+# 🕒 Stoppuhr starten
 stop_event = threading.Event()
-
-# Initialize elapsed time and status message
-elapsed_time = 0
-status_msg = "✅ Successful!"
-
-# 🕒 Shared start time
 start_time = time.time()
-success = True  # Assume success unless an error occurs
-response = None  # Placeholder for the model's response
 
-# Start a live stopwatch in a separate thread
-def live_stopwatch(start_time):
+
+def live_stopwatch(start):
     while not stop_event.is_set():
-        elapsed = time.time() - start_time
+        elapsed = time.time() - start
         mins, secs = divmod(int(elapsed), 60)
         millis = int((elapsed - int(elapsed)) * 1000)
-        print(f"\r⏳ Elapsed Time: {mins:02d}:{secs:02d}.{millis:03d}", end="")
+        print(f"\r⏳ {mins:02d}:{secs:02d}.{millis:03d}", end="")
         time.sleep(0.1)
     print("\n✅ Stopwatch stopped.")
 
-# 🟢 Start the stopwatch
-t = threading.Thread(target=live_stopwatch, args=(start_time,))
-t.start()
+
+threading.Thread(target=live_stopwatch, args=(start_time,)).start()
+
+success = True
+response_text = ""
+status_msg = "✅ Successful!"
+elapsed_time = 0
 
 try:
-    # Send request to LM Studio
     response = requests.post(
         api_url,
         headers={"Content-Type": "application/json"},
@@ -118,68 +107,37 @@ try:
             ],
             "temperature": 0.0
         },
-        timeout=300  # 5-minute timeout
+        timeout=300
     )
 
-    # Measure response time
-    end_time = time.time()
-    elapsed_time = end_time - start_time
-    minutes, seconds = divmod(elapsed_time, 60)
-
-    print(f"\n✅ Response time: {elapsed_time:.2f} seconds.")
-    print(f"🕓 = {int(minutes)} minutes and {int(seconds)} seconds.")
-
-    # Parse response content
-    response = response.json()["choices"][0]["message"]["content"]
-    print(f"\n📩 LM Studio Response:\n{response}")
+    elapsed_time = time.time() - start_time
+    print(f"\n✅ Response in {elapsed_time:.2f} seconds.")
+    response_text = response.json()["choices"][0]["message"]["content"]
+    print(f"\n📩 Antwort:\n{response_text}")
 
 except requests.exceptions.Timeout:
-    error_msg = "⏱️ Request timed out after 5 minutes."
-    status_msg = f"Response: {response}"
-    print(error_msg)
-    print(status_msg)
-    response = f"{error_msg}"
     success = False
+    response_text = "⏱️ Timeout: Keine Antwort innerhalb von 5 Minuten."
 
 except requests.exceptions.RequestException as e:
-    error_msg = f"❌ Request or connection error occurred: {e}"
-    status_msg = f"Response: {response}"
-    print(error_msg)
-    print(status_msg)
-    response = f"{error_msg}"
     success = False
+    response_text = f"❌ Request/Connection error: {e}"
 
-except ValueError:
-    error_msg = "❌❌ Could not parse response as valid JSON."
-    status_msg = f"Response: {response}"
-    print(error_msg)
-    print(status_msg)
-    response = f"{error_msg}"
+except (ValueError, KeyError) as e:
     success = False
-
-except KeyError as e:
-    error_msg = f"❌ Incomplete or malformed response (KeyError: '{e.args[0]}')."
-    status_msg = f"Response: {response}"
-    print(error_msg)
-    print(status_msg)
-    response = f"{error_msg}"
-    success = False
+    response_text = f"❌ Parsing/Key error: {e}"
 
 finally:
+    # 🧠 Log speichern
     try:
-        save_log(prompt_path, user_input, str(response), elapsed_time, status_msg)
-        
+        save_log(prompt_path, user_input, response_text, elapsed_time, status_msg)
         if success:
             beep_success()
         else:
-            beep_failure(error=response)
-
+            beep_failure(error_msg=response_text)
     except Exception as e:
-        print(f"⚠️ Error while saving log file: {e}")
-        beep_failure(error=e)
+        print(f"⚠️ Fehler beim Log-Speichern: {e}")
+        beep_failure(error_msg=str(e))
 
     stop_event.set()
-    t.join()
-    print(status_msg)
-
 

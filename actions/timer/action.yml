@@ -1,6 +1,6 @@
 name: "LLM Response Timer Action"
 description: "Measure response time of local LLM via LM Studio"
-author: "Margarethe-Techstarter"
+author: "Margarethe-S"
 
 inputs:
   api_url:
