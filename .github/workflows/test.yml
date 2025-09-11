@@ -15,5 +15,5 @@ jobs:
         uses: ./
         with:
           api_url: 'http://localhost:1234/v1/chat/completions'
-          prompt_file: 'actions/timer/prompts/action_prompt1.0.txt'
+          prompt_file: 'prompts/action_prompt1.0.txt'
           user_input: 'Was kann ich gegen Kopfschmerzen auf natürliche Weise tun?'

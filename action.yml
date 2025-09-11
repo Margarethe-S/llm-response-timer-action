@@ -15,7 +15,7 @@ inputs:
 
 runs:
   using: docker
-  image: ./action/timer/Dockerfile
+  image: Dockerfile
   args:
     - ${{ inputs.api_url }}
     - ${{ inputs.prompt_file }}
