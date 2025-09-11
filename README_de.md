@@ -148,7 +148,7 @@ Im Container führt das Skript folgende Schritte aus:
 
 
 ## 🖼️ Screenshots 
-Screenshot: Log-Ordnerstrucktur
+Screenshot: Log-Ordnerstruktur
 
 ![alt text](images/image-1.png)
 
