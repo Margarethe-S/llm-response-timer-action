@@ -84,7 +84,7 @@ pip install -r requirements.txt
 ## ▶️ Run the Action Locally
 
 ```bash
-python actions/timer/main.py http://localhost:1234/v1/chat/completions prompts/action_prompt1.0.txt "Was kann ich gegen Kopfschmerzen auf natürliche Weise tun?" 
+python main.py http://localhost:1234/v1/chat/completions prompts/action_prompt1.0.txt "Was kann ich gegen Kopfschmerzen auf natürliche Weise tun?" 
 ```
 
 💡 Adjust the path syntax for your OS: `\` (Windows) or `/` (macOS/Linux).

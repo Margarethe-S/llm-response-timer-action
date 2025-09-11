@@ -1,13 +1,10 @@
 import os
 import sys
 import requests
-import json
 import time
 import threading
 import platform
-from datetime import datetime
 from logger import save_log
-from playsound import playsound  # Optional, falls du mp3s nutzen willst
 
 # 🎵 Sound- und Popup-Handling
 def beep_success():

@@ -85,7 +85,7 @@ pip install -r requirements.txt
 
 ✅ Beispiel:
 ```bash
-python actions/timer/main.py http://localhost:1234/v1/chat/completions prompts/action_prompt1.0.txt "Was kann ich gegen Kopfschmerzen auf natürliche Weise tun?" 
+python main.py http://localhost:1234/v1/chat/completions prompts/action_prompt1.0.txt "Was kann ich gegen Kopfschmerzen auf natürliche Weise tun?" 
 ```
 > ⚠️ **Achte auf die genaue Schreibweise und die Leerzeichen im Befehl!**
 > 
