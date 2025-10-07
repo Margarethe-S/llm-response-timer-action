@@ -1,7 +1,7 @@
 > ➡️ [Click here for the German version](README_de.md)
 # 📜 llm-response-timer-action
 
-![MIT License](https://img.shields.io/badge/license-MIT-green)
+[![License: AGPL v3](https://img.shields.io/badge/license-AGPL--3.0-green.svg)](https://www.gnu.org/licenses/agpl-3.0)
 ![Tested on LM Studio](https://img.shields.io/badge/tested-LM%20Studio-blue)
 
 
@@ -154,16 +154,20 @@ Screenshot: Example log file content
 Screenshot: Terminal response 
 
 ![alt text](images/image-4.png)
----
-## 🔓 Use Freely
 
-This repository is shared in the spirit of learning and development.  
-Feel free to fork or adapt it if it’s useful for your own projects.
+## 🆓 Freely usable
 
-Good luck with your builds!
 
-📝 License: This project is licensed under the MIT License.  
+This repository is provided for the purpose of learning and further development.  
+You are welcome to fork or adapt it – just make sure to comply with the license terms.
+
+
+⚠️ If you publicly use or distribute the project (e.g. as a web app or hosted service),  
+you are required to make your own changes publicly available as well.
+
+📜 License: This project is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0).  
 See the [LICENSE](./LICENSE) file for details.
+
 
 ---
 

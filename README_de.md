@@ -1,6 +1,6 @@
 > ➡️ [Hier geht’s zur englischen Version](README.md)
 # 📜 llm-response-timer-action
-![MIT License](https://img.shields.io/badge/license-MIT-green)
+[![License: AGPL v3](https://img.shields.io/badge/license-AGPL--3.0-green.svg)](https://www.gnu.org/licenses/agpl-3.0)
 ![Tested on LM Studio](https://img.shields.io/badge/tested-LM%20Studio-blue)
 
 
@@ -165,15 +165,15 @@ Screenshot: Terminalausgabe der Antwortzeit
 
 ![alt text](images/image-2.png)
 
----
-## 🔓 Frei verwendbar
+
+## 🆓 Frei verwendbar
 
 Dieses Repository wird im Sinne von Lernen und Weiterentwicklung bereitgestellt.  
-Gerne darfst du es forken oder anpassen, wenn es dir bei eigenen Projekten hilft.
+Du darfst es forken oder anpassen – beachte dabei jedoch die Bedingungen der Lizenz.
 
-Viel Erfolg bei deinen Entwicklungen!
+🔒 Bei einer Weitergabe oder öffentlichen Nutzung (z. B. Web-Anwendung, Hosting) bist du verpflichtet, auch deine Änderungen offenzulegen.
 
-📝 Lizenz: Dieses Projekt steht unter der MIT-Lizenz.  
+📜 Lizenz: Dieses Projekt steht unter der GNU Affero General Public License v3.0 (AGPL-3.0).  
 Details findest du in der Datei [LICENSE](./LICENSE).
 
 ---
