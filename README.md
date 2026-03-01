@@ -26,7 +26,8 @@ Development remains transparent and learning-focused – including all tests, lo
 ✅ The GitHub Marketplace release is already live.
 
 ## ☁️ Cloud Compatibility:
-This project is primarily designed for local and Docker-based environments. Cloud usage is possible if a locally hosted LLM endpoint is properly accessible.
+This project is primarily designed for local and Docker-based environments.
+Cloud usage is possible as long as a compatible LLM API endpoint is accessible.
 
 ## 🛠️ Features
 
