@@ -24,7 +24,8 @@ Die Entwicklung bleibt offen, nachvollziehbar und lernorientiert – inklusive a
 ✅ Die Grundfunktionalität wurde erfolgreich getestet. Eine Veröffentlichung im GitHub Marketplace ist erfolgt.
 
 ## 📡 Cloud-Kompatibilität:
-Dieses Projekt ist primär für lokale und Docker-basierte Umgebungen ausgelegt. Eine Nutzung in Cloud-Umgebungen ist möglich, sofern dort ein lokal gehosteter LLM-Endpunkt korrekt erreichbar ist.
+Dieses Projekt ist primär für lokale und Docker-basierte Umgebungen ausgelegt.
+Eine Cloud-Nutzung ist möglich, sofern ein kompatibler LLM-API-Endpunkt erreichbar ist.
 
 ## 🛠️ Funktionen
 
