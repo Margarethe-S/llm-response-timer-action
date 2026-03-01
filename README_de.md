@@ -23,11 +23,8 @@ Die Entwicklung bleibt offen, nachvollziehbar und lernorientiert – inklusive a
 
 ✅ Die Grundfunktionalität wurde erfolgreich getestet. Eine Veröffentlichung im GitHub Marketplace ist erfolgt.
 
-## 📡 Cloud-Kompatibilität (aktueller Stand 16.09.25)
-Das Projekt wurde für lokale und Docker-basierte Umgebungen konzipiert und erfolgreich getestet.
-Ein Test in der Cloud (z. B. via AWS EC2) ist theoretisch möglich, erfordert aber ein lokal laufendes LLM (z. B. Ollama oder LM Studio) auf dem Cloud-Server – inklusive freigegebenem Port und korrekter API-URL im Aufruf.
-Momentan existiert keine vollständige Web-Anwendung mit integrierter LLM, sodass eine direkte Nutzung der Action in der Cloud nur bedingt möglich ist.
-Die Integration in ein größeres System (z. B. Dr. Nature als Web-App mit LLM) wäre eine mögliche Lösung für zukünftige Cloud-Deployments.
+## 📡 Cloud-Kompatibilität:
+Dieses Projekt ist primär für lokale und Docker-basierte Umgebungen ausgelegt. Eine Nutzung in Cloud-Umgebungen ist möglich, sofern dort ein lokal gehosteter LLM-Endpunkt korrekt erreichbar ist.
 
 ## 🛠️ Funktionen
 
