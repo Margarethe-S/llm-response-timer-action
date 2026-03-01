@@ -25,11 +25,8 @@ Development remains transparent and learning-focused – including all tests, lo
 
 ✅ The GitHub Marketplace release is already live.
 
-## ☁️ Cloud Compatibility (Current Status 16.09.25)
-This project was designed and successfully tested for local and Docker-based environments.
-Cloud testing (e.g. via AWS EC2) is theoretically possible but requires a locally running LLM (such as Ollama or LM Studio) installed on the cloud server – with an open port and a correct API URL provided in the call.
-Currently, there is no full web application with an integrated LLM, so direct usage of this Action in the cloud is limited.
-Integration into a larger system (e.g. Dr. Nature as a web-based app with an LLM backend) would be a possible future solution for cloud deployments.
+## ☁️ Cloud Compatibility:
+This project is primarily designed for local and Docker-based environments. Cloud usage is possible if a locally hosted LLM endpoint is properly accessible.
 
 ## 🛠️ Features
 
