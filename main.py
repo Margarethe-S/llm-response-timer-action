@@ -58,6 +58,12 @@ api_url = sys.argv[1]
 prompt_path = sys.argv[2]
 user_input = sys.argv[3]
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, ".."))
+
+if not os.path.isabs(prompt_path):
+    prompt_path = os.path.join(PROJECT_ROOT, prompt_path)
+
 # 📂 Logs-Verzeichnis sicherstellen
 os.makedirs("logs", exist_ok=True)
 
